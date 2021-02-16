@@ -2,15 +2,25 @@ package com.backend.cursomc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;	// JPA - Faz o mapeamento "objeto - relacional". Converte objeto para tabela de banco de dados
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /* Implemeta a interface "Serializable"
  * Que permite que os objetos desta classe podem ser convertidos
  * em uma sequencia de bytes. Para que eles possam ser gravados
  * em arquivos ou trafegar em redes etc
  * */
 
+
+/* anotação para "jpa" para indicar que essa classe será uma "entidade jpa" */
+@Entity		
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;	// versão padrão do serializable
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	// Defini geração automática dos IDs das categorias
 	private Integer id;
 	private String nome;
 	
